@@ -34,6 +34,8 @@ public class DataBase implements Data {
 
     @Override
     public List<Player> loadData() {
+        //todo 修改为从文件中获取player的数据记录
+
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;

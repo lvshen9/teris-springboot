@@ -75,9 +75,9 @@ public class GameControl {
         //创建游戏逻辑快，链接游戏数据源
         this.gameService = new GameTetris(dto);
         //创建数据接口A对象
-        //this.dataA = createDataObject(GameConfig.getDataConfig().getDataA());
+        this.dataA = createDataObject(GameConfig.getDataConfig().getDataA());
         //设置数据库记录到游戏
-        //this.dto.setDbRecode(dataA.loadData());
+        this.dto.setDbRecode(dataA.loadData());
         //设置数据接口B获得本地磁盘记录
         this.dataB = createDataObject(GameConfig.getDataConfig().getDataB());
         //设置本地磁盘记录到游戏
