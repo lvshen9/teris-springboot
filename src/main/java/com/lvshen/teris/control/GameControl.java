@@ -81,9 +81,9 @@ public class GameControl {
         //设置数据接口B获得本地磁盘记录
         this.dataB = createDataObject(GameConfig.getDataConfig().getDataB());
         //设置本地磁盘记录到游戏
-        List<Player> diskRecode = testDataPlayers();
-        this.dto.setDiskRecode(diskRecode);
-        //this.dto.setDiskRecode(dataB.loadData());
+        //List<Player> diskRecode = testDataPlayers();
+        //this.dto.setDiskRecode(diskRecode);
+        this.dto.setDiskRecode(dataB.loadData());
         //创建游戏面板
         this.panelGame = new JPanelGame(this, dto);
         //读取用户控制设置
