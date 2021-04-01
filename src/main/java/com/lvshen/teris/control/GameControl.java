@@ -81,12 +81,7 @@ public class GameControl {
         //设置数据接口B获得本地磁盘记录
         this.dataB = createDataObject(GameConfig.getDataConfig().getDataB());
         //设置本地磁盘记录到游戏
-        List<Player> diskRecode = new ArrayList<>();
-        diskRecode.add(new Player("lvshen",100));
-        diskRecode.add(new Player("zhouzhou",40));
-        diskRecode.add(new Player("huamulan",120));
-        diskRecode.add(new Player("niumo",200));
-        diskRecode.add(new Player("alan",300));
+        List<Player> diskRecode = testDataPlayers();
         this.dto.setDiskRecode(diskRecode);
         //this.dto.setDiskRecode(dataB.loadData());
         //创建游戏面板
@@ -259,6 +254,16 @@ public class GameControl {
             }
             afterLose();
         }
+    }
+
+    public List<Player> testDataPlayers() {
+        List<Player> diskRecode = new ArrayList<>();
+        diskRecode.add(new Player("lvshen",100));
+        diskRecode.add(new Player("zhouzhou",40));
+        diskRecode.add(new Player("huamulan",120));
+        diskRecode.add(new Player("niumo",200));
+        diskRecode.add(new Player("alan",300));
+        return diskRecode;
     }
     //以下代码作废，有更加效率的代码
     /**
