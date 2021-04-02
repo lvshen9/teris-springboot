@@ -5,9 +5,11 @@ import com.google.common.collect.Lists;
 import com.lvshen.teris.dto.Player;
 import com.lvshen.teris.util.FileUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class DataDisk implements Data {
@@ -30,9 +32,17 @@ public class DataDisk implements Data {
         if (pla == null) {
             return;
         }
+        int nowPlayerPoint = pla.getPoint();
+        List<Player> playerList = this.loadData();
+
+        if (CollectionUtils.isNotEmpty(playerList) && playerList.size() > 1 && playerList.get(playerList.size() - 1).getPoint() > nowPlayerPoint) {
+            return;
+        }
+        List<Player> newPlayerList = playerList.stream().filter(player -> !player.getName().equals(pla.getName())).collect(Collectors.toList());
+        newPlayerList.add(pla);
         //重新写入
         //FileUtils.writePlayerData(pla, DATA_B_PATH);
-        FileUtils.writePlayerDataWithDisk(pla, DATA_B_PATH);
+        FileUtils.writePlayerDataWithDisk(newPlayerList, DATA_B_PATH);
     }
 
 }
